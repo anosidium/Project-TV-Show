@@ -1,3 +1,5 @@
 #root {
-  color: red;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
 }
