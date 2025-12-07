@@ -21,9 +21,11 @@ function createEpisodeCard(episode) {
 
   card.querySelector("h3").textContent = episode.name;
   card.querySelector("img").src = episode.image.medium;
+
   const seasonNumber = String(episode.season).padStart(2, "0");
   const episodeNumber = String(episode.number).padStart(2, "0");
   card.querySelector("[data-season-episode-number]").textContent = `${seasonNumber}${episodeNumber}`;
+
   card.querySelector("time").textContent = `${episode.runtime} minutes`;
   card.querySelector("[data-episode-summary]").textContent = episode.summary.replace(/^<p>|<\/p>$/g, "");
 
