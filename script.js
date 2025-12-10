@@ -50,12 +50,12 @@ function createEpisodeCard(episode) {
 	const episodeNumber = String(episode.number).padStart(2, '0');
 	card.querySelector(
 		'[data-season-episode-number]'
-	).textContent = `${seasonNumber}${episodeNumber}`;
+	).textContent = `S${seasonNumber}E${episodeNumber}`;
 
 	card.querySelector('time').textContent = `${episode.runtime} minutes`;
+  card.querySelector('time').setAttribute('datetime', `PT${episode.runtime}M`); 
 	card.querySelector('[data-episode-summary]').textContent =
-		episode.summary.replace(/^<p>|<\/p>$/g, '');
-
+		episode.summary.replace(/<\/?p>/g, '').trim();
 	card.querySelector('[data-episode-link]').href = episode.url;
 
 	return card;
