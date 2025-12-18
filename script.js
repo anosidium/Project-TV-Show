@@ -91,6 +91,20 @@ function setupShowSelector() {
 	});
 }
 
+function makePageForTVShows(tvShows) {
+  const rootElement = document.getElementById("root");
+  rootElement.innerHTML = "";
+  
+  const shows = [];
+
+  for (const tvShow of tvShows) {
+    const card = createTVShowCard(tvShow);
+    shows.push(card);
+  }
+
+  rootElement.append(...shows);
+}
+
 function makePageForEpisodes(episodeList) {
 	const rootElem = document.getElementById('root');
 	rootElem.innerHTML = '';
@@ -111,6 +125,20 @@ function makePageForEpisodes(episodeList) {
 	}
 
 	updateEpisodeCount(episodeList.length, state.allEpisodes.length);
+}
+
+function createTVShowCard(tvShow) {
+  const card = document.getElementById("tv-show-card").content.cloneNode(true);
+
+  card.querySelector("h3").textContent = tvShow.name;
+  card.querySelector("img").src = tvShow.image.medium;
+  card.querySelector("[data-tv-show-summary]").innerHTML = tvShow.summary.replace(/<\/?p>/g, "")?.trim();
+  card.querySelector("[data-tv-show-genres]").textContent = tvShow.genres.join(", ");
+  card.querySelector("[data-tv-show-status]").textContent = tvShow.status;
+  card.querySelector("[data-tv-show-rating]").textContent = tvShow.rating.average;
+  card.querySelector("[data-tv-show-runtime]").textContent = tvShow.runtime;
+
+  return card;
 }
 
 function createEpisodeCard(episode) {
