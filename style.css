@@ -74,6 +74,12 @@ label {
 	color: #666;
 }
 
+/* ===== Placeholder ===== */
+
+#placeholder {
+	text-align: center;
+}
+
 /* ===== Episode Grid ===== */
 #root {
 	display: grid;
