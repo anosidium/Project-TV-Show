@@ -33,7 +33,7 @@ const state = {
 // Helper function to get sorted shows
 function getSortedShows() {
 	return [...state.showCache].sort((a, b) =>
-		a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+		a.name.localeCompare(b.name , 'en', { sensitivity: 'base' })
 	);
 }
 
