@@ -19,8 +19,8 @@ header {
 	max-width: 1200px;
 	margin: 0 auto;
 	display: flex;
-	gap: 30px;
-	flex-wrap: wrap;
+	gap: 20px;
+	flex-wrap: nowrap;
 	align-items: center;
 }
 
@@ -30,9 +30,10 @@ header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 15px;
-	flex: 1;
-	min-width: 250px;
+	gap: 12px;
+	flex: 1 1 0;
+	min-width: 0;
+	flex-wrap: nowrap;
 }
 
 .search-container label,
@@ -41,9 +42,12 @@ header {
 }
 
 .search-container input,
-.selector-container select {
-	flex: 1;
-	min-width: 250px;
+.selector-container select,
+#show-selector,
+#episode-selector,
+#search-input {
+	flex: 1 1 0;
+	min-width: 0;
 }
 
 label {
@@ -53,7 +57,8 @@ label {
 }
 
 #search-input,
-#episode-selector {
+#episode-selector,
+#show-selector {
 	padding: 10px;
 	font-size: 16px;
 	border: 1px solid #ccc;
@@ -63,7 +68,8 @@ label {
 }
 
 #search-input:focus,
-#episode-selector:focus {
+#episode-selector:focus,
+#show-selector:focus {
 	outline: 2px solid #4caf50;
 	border-color: #4caf50;
 }
