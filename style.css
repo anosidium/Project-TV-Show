@@ -107,7 +107,7 @@ label {
 	width: 350px;
 }
 
-/* ===== Episode Cards ===== */
+/* ===== Cards ===== */
 section {
 	border: 3px solid black;
 	padding: 10px;
@@ -119,6 +119,26 @@ section {
 section img {
 	width: 100%;
 	height: auto;
+}
+
+section p[data-tv-show-genres]::before {
+	content: "Genres: ";
+	font-weight: bold;
+}
+
+section p[data-tv-show-status]::before {
+	content: "Status: ";
+	font-weight: bold;
+}
+
+section p[data-tv-show-rating]::before {
+	content: "Rating: ";
+	font-weight: bold;
+}
+
+section time[data-tv-show-runtime]::before {
+	content: "Runtime: ";
+	font-weight: bold;
 }
 
 section a[data-episode-link] {
