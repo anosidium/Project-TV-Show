@@ -11,11 +11,12 @@
 
   <body>
     <header>
+      <button id="back-to-shows" hidden>← Back to shows</button>
+
       <div class="controls">
         <div class="selector-container">
           <label for="show-selector">Select show:</label>
-          <select id="show-selector">
-          </select>
+          <select id="show-selector"></select>
           <label for="episode-selector">Select episode:</label>
           <select id="episode-selector">
             <option value="">All episodes</option>
@@ -28,6 +29,18 @@
         </div>
       </div>
     </header>
+
+    <template id="tv-show-card">
+      <section>
+        <h3></h3>
+        <img width="210" height="118" />
+        <p data-tv-show-summary></p>
+        <p data-tv-show-genres></p>
+        <p data-tv-show-status></p>
+        <p data-tv-show-rating></p>
+        <time data-tv-show-runtime></time>
+      </section>
+    </template>
 
     <template id="episode-card">
       <section>
