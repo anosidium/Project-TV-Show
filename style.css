@@ -36,8 +36,9 @@ header {
 	max-width: 1200px;
 	margin: 0 auto;
 	display: flex;
-	gap: 20px;
-	align-items: center;
+	gap: 24px;
+	align-items: flex-start;
+	flex-wrap: wrap;
 }
 
 /* Back button */
@@ -61,8 +62,8 @@ header {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	flex: 1;
-	min-width: 0;
+	flex: 1 1 480px;
+	min-width: 480px;
 }
 
 label {
@@ -72,6 +73,7 @@ label {
 	white-space: nowrap;
 }
 
+/* Inputs */
 #search-input,
 #episode-selector,
 #show-selector {
@@ -84,6 +86,7 @@ label {
 	height: 42px;
 	background-color: #fff;
 	transition: border-color 0.2s, box-shadow 0.2s;
+	min-width: 0;
 }
 
 #search-input:focus,
@@ -94,10 +97,12 @@ label {
 	box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
+/* Episode count */
 #episode-count {
-	white-space: nowrap;
 	font-size: 13px;
 	color: var(--text-muted);
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 /* ===== Placeholder ===== */
@@ -225,7 +230,9 @@ footer {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.controls {
+	.search-container,
+	.selector-container {
+		min-width: 100%;
 		flex-direction: column;
 		align-items: stretch;
 	}
