@@ -192,6 +192,19 @@ function setupBackNavigation() {
   });
 }
 
+function toggleControlsForEpisodes() {
+  document.getElementById("back-to-shows").hidden = false;
+  document.getElementById("episode-selector").disabled = false;
+  document.getElementById("search-input").disabled = false;
+}
+
+function toggleControlsForShows() {
+  document.getElementById("back-to-shows").hidden = true;
+  document.getElementById("episode-selector").disabled = true;
+  document.getElementById("search-input").value = "";
+  document.getElementById("episode-count").textContent = "";
+}
+
 function setupSearch() {
   const searchInput = document.getElementById("search-input");
   const selector = document.getElementById("episode-selector");
