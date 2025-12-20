@@ -56,6 +56,7 @@ async function setup() {
     placeholder.textContent = "There was an error fetching TV shows. Please try again.";
   }
 
+  setupBackNavigation();
   makePageForEpisodes(state.allEpisodes);
   setupSearch();
   setupEpisodeSelector();
@@ -176,6 +177,19 @@ function createEpisodeCard(episode) {
   card.querySelector("[data-episode-link]").href = episode.url;
 
   return card;
+}
+
+function setupBackNavigation() {
+  const backBtn = document.getElementById("back-to-shows");
+
+  backBtn.addEventListener("click", () => {
+    state.view = "shows";
+    state.selectedShowID = "";
+    state.allEpisodes = [];
+
+    makePageForTVShows(state.showCache);
+    toggleControlsForShows();
+  });
 }
 
 function setupSearch() {
