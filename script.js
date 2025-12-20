@@ -130,14 +130,28 @@ function makePageForEpisodes(episodeList) {
 
 function createTVShowCard(tvShow) {
   const card = document.getElementById("tv-show-card").content.cloneNode(true);
+  const section = card.querySelector("section");
+
+  section.style.cursor = "pointer";
+
+  section.addEventListener("click", async () => {
+    state.selectedShowID = tvShow.id;
+    state.view = "episodes";
+
+    state.allEpisodes = await getAllEpisodes(tvShow.id);
+
+    makePageForEpisodes(state.allEpisodes);
+    populateEpisodeSelector();
+    toggleControlsForEpisodes();
+  });
 
   card.querySelector("h3").textContent = tvShow.name;
-  card.querySelector("img").src = tvShow.image.medium;
-  card.querySelector("[data-tv-show-summary]").innerHTML = tvShow.summary.replace(/<\/?p>/g, "")?.trim();
+  card.querySelector("img").src = tvShow.image?.medium || "";
+  card.querySelector("[data-tv-show-summary]").innerHTML = tvShow.summary?.replace(/<\/?p>/g, "") || "";
   card.querySelector("[data-tv-show-genres]").textContent = tvShow.genres.join(", ");
   card.querySelector("[data-tv-show-status]").textContent = tvShow.status;
-  card.querySelector("[data-tv-show-rating]").textContent = tvShow.rating.average;
-  card.querySelector("[data-tv-show-runtime]").textContent = tvShow.runtime;
+  card.querySelector("[data-tv-show-rating]").textContent = tvShow.rating?.average ?? "N/A";
+  card.querySelector("[data-tv-show-runtime]").textContent = `${tvShow.runtime} minutes`;
 
   return card;
 }
