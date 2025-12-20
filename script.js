@@ -23,6 +23,10 @@ async function getAllShows() {
 }
 
 async function getAllEpisodes(showId) {
+  if (state.episodeCache[showId]) {
+    return state.episodeCache[showId];
+  }
+
   const url = `https://api.tvmaze.com/shows/${showId}/episodes`;
   const response = await fetch(url);
   const data = await response.json();
