@@ -207,14 +207,20 @@ function toggleControlsForShows() {
 
 function setupSearch() {
   const searchInput = document.getElementById("search-input");
-  const selector = document.getElementById("episode-selector");
 
   searchInput.addEventListener("input", (event) => {
-    state.searchTerm = event.target.value.toLowerCase();
-    const filteredEpisodes = filterEpisodes();
-    state.selectedEpisodeId = "";
-    selector.value = "";
-    makePageForEpisodes(filteredEpisodes);
+    const term = event.target.value.toLowerCase();
+
+    if (state.view === "shows") {
+      const filteredShows = state.showCache.filter((show) => {
+        return show.name.toLowerCase().includes(term) || show.genres.join(" ").toLowerCase().includes(term) || show.summary?.toLowerCase().includes(term);
+      });
+
+      makePageForTVShows(filteredShows);
+    } else {
+      state.searchTerm = term;
+      makePageForEpisodes(filterEpisodes());
+    }
   });
 }
 
